@@ -36,7 +36,7 @@ Analysis should include:
     //tagName[.='text'] : WebElelement TEXT
     //tagName[contains(@attribute,'value')] : attribute + partial text
 
-    CSS: has more cleaner syntax, might be faster
+    CSS: has cleaner syntax, might be faster
     tagName[attribute='value']
     Using ID or ClassName
     tagName#iDValue ---- > #iDValue
