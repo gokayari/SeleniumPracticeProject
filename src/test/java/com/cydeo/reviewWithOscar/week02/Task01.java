@@ -1,5 +1,6 @@
 package com.cydeo.reviewWithOscar.week02;
 
+import com.cydeo.utilities.HandleWait;
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ public class Task01 {
         //go to https://practice.cydeo.com/
         driver.get("https://practice.cydeo.com/");
 
+        HandleWait.staticWait(1);
         //then click on "forgot_password" link
         /*
         2 ways of using webElements: "long way or lazy way"
@@ -24,6 +26,7 @@ public class Task01 {
         forgotPasswordLink.click();
 
         //enter any email
+        HandleWait.staticWait(1);
         WebElement emailBox = driver.findElement(By.name("email"));
         //emailBox.sendKeys("mike.smith@garbage.com");  //option1
 
@@ -46,6 +49,22 @@ public class Task01 {
             System.out.println("actualEmail = " + actualEmail);
             System.out.println("expectedEmail = " + expectedEmail);
         }
+// click on Retrieve password
+        // use id
+        // driver.findElement(By.id("form_submit")).click();
 
+        // use CSS
+        //  driver.findElement(By.cssSelector("#form_submit")).click();
+
+        // using tagName locator, since it is the only one : //button
+        //  driver.findElement(By.tagName("//button")).click();
+
+        // use Retrieve word to locate with XPATH : //i[contains(text(),'Retrieve')]
+        driver.findElement(By.xpath("//i[contains(text(),'Retrieve')]")).click();
+
+
+        HandleWait.staticWait(1);
+        // close or quit the page
+        driver.close();
     }
 }
