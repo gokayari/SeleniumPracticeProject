@@ -4,6 +4,7 @@ import com.cydeo.utilities.HandleWait;
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class T5_T6_DropDownTasks {
+public class T5_6_7_8_DropDownTasks {
 
 
     WebDriver driver;
@@ -73,6 +74,29 @@ public class T5_T6_DropDownTasks {
         System.out.println("actualText = " + actualText);
 
         Assert.assertEquals(actualText,expectedText);
+    }
+
+    //TC #7: Selecting value from non-select dropdown
+    @Test
+    public void task7Test(){
+        //my solution:
+        HandleWait.staticWait(1);
+        //3. Click to non-select dropdown
+        WebElement nonSelectDropdown = driver.findElement(By.xpath("//a[@class='btn btn-secondary dropdown-toggle']"));
+        nonSelectDropdown.click();
+
+        HandleWait.staticWait(1);
+        //4. Select Facebook from dropdown
+        WebElement nonSelectDropdownSelect = driver.findElement(By.xpath("//a[.='Facebook']"));
+        nonSelectDropdownSelect.click();
+
+        //5. Verify title is “Facebook - Log In or Sign Up”
+        String expectedTitle = "Facebook – Anmelden oder Registrieren";
+        String actualTitle = driver.getTitle();
+
+        Assert.assertEquals(actualTitle,expectedTitle);
+
+
     }
 
     @AfterMethod
