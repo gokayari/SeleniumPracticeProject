@@ -78,6 +78,30 @@ public class T1_2_3_Alert_Practices {
         Assert.assertEquals(actualText, expectedText);
     }
 
+    //TC #3: Information alert practice
+    @Test
+    public void alertTest3(){
+        //3. Click to “Click for JS Prompt” button
+        WebElement jsPromptButton = driver.findElement(By.xpath("//button[@onclick='jsPrompt()']"));
+        jsPromptButton.click();
+
+        Alert alert = driver.switchTo().alert();
+
+        HandleWait.staticWait(1);
+        //4. Send “hello” text to alert
+        alert.sendKeys("hello");
+
+        HandleWait.staticWait(1);
+        //5. Click to OK button from the alert
+        alert.accept();
+
+        //6. Verify “You entered: hello” text is displayed.
+        String expectedText = "You entered: hello";
+        String actualText = driver.findElement(By.xpath("//p[.=\"You entered: hello\"]")).getText();
+
+        Assert.assertEquals(actualText, expectedText);
+    }
+
     @AfterMethod
     public void teardownMethod(){
         HandleWait.staticWait(1);
