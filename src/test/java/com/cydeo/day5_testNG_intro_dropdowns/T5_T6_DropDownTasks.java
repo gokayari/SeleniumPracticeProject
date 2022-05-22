@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class T5_T6_DropDownTasks {
 
-    //TC #5: Selecting state from State dropdown and verifying result
+
     WebDriver driver;
 
     @BeforeMethod
@@ -28,6 +28,7 @@ public class T5_T6_DropDownTasks {
         driver.get("http://practice.cybertekschool.com/dropdown");
     }
 
+    //TC #5: Selecting state from State dropdown and verifying result
     @Test
     public void selectStatesTest(){
 
@@ -48,6 +49,30 @@ public class T5_T6_DropDownTasks {
         Assert.assertEquals(actualText,expectedText);
         //Use all Select options. (visible text, value, index)
 
+    }
+
+    //TC #6: Selecting date on dropdown and verifying
+    @Test
+    public void selectDateOfBirthTest(){
+
+        //3. Select “December 1st, 1923” and verify it is selected.
+        //Select year using : visible text Select month using : value attribute Select day using : index number
+
+        Select dropdownDateOfBirthYear = new Select(driver.findElement(By.cssSelector("select[id='year']")));
+        dropdownDateOfBirthYear.selectByVisibleText("1923");
+
+        Select dropdownDateOfBirthMonth = new Select(driver.findElement(By.cssSelector("select[id='month']")));
+        dropdownDateOfBirthMonth.selectByValue("11");
+
+        Select dropdownDateOfBirthDay = new Select(driver.findElement(By.cssSelector("select[id='day']")));
+        dropdownDateOfBirthDay.selectByIndex(0);
+
+        String expectedText = "December 1st, 1923";
+        String actualText = dropdownDateOfBirthMonth.getFirstSelectedOption().getText() + " "
+                + dropdownDateOfBirthDay.getFirstSelectedOption().getText() + "st, " + dropdownDateOfBirthYear.getFirstSelectedOption().getText();
+        System.out.println("actualText = " + actualText);
+
+        Assert.assertEquals(actualText,expectedText);
     }
 
     @AfterMethod
