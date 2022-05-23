@@ -11,6 +11,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class T5_6_7_8_DropDownTasks {
@@ -99,11 +100,34 @@ public class T5_6_7_8_DropDownTasks {
 
     }
 
+    //TC #8: Selecting value from multiple select dropdown
+    @Test
+    public void task8Test(){
+        //my solution:
+        HandleWait.staticWait(1);
+        //3. Select all the options from multiple select dropdown.
+
+        Select selectLanguages = new Select(driver.findElement(By.cssSelector("select[name='Languages']")));
+        for (int i = 0; i < 5; i++) {
+            selectLanguages.selectByIndex(i);
+            HandleWait.staticWait(1);
+        }
+
+        //4. Print out all selected values.
+        List<WebElement> allOptions = selectLanguages.getOptions();
+        for (WebElement each : allOptions) {
+            System.out.println(each.getText());
+        }
+
+        HandleWait.staticWait(1);
+        //5. Deselect all values.
+        selectLanguages.deselectAll();
+
+    }
+
     @AfterMethod
     public void tearDownMethod(){
         HandleWait.staticWait(1);
         driver.close();
     }
 }
-
-
