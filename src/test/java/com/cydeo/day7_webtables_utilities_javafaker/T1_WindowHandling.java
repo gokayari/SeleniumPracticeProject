@@ -5,6 +5,8 @@ import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -42,23 +44,40 @@ public class T1_WindowHandling {
         for (String each : allWindowsHandles) {
             driver.switchTo().window(each);
 
+            System.out.println("Current URL: "+ driver.getCurrentUrl());
             HandleWait.staticWait(1);
 
+            //my practice:
             if (driver.getTitle().contains("Google")){
                 driver.findElement(By.xpath("//div[.=\"Ich stimme zu\"]")).click();
             }else if(driver.getTitle().contains("Etsy")){
                 driver.findElement(By.xpath("//button[@class='wt-btn wt-btn--filled wt-mb-xs-0']")).click();
+                break;
             }else if(driver.getTitle().contains("Facebook")){
                 driver.findElement(By.xpath("//button[text()=\"Nur erforderliche Cookies erlauben\"]")).click();
             }
+            //--
 
-            System.out.println("Current URL: "+ driver.getCurrentUrl());
+            /*
+            if (driver.getCurrentUrl().contains("Etsy")){
+                break;
+            }
+            */
         }
 
         //5. Assert:Title contains “Etsy”
 
+            String actualTitle = driver.getTitle();
+            String expectedInTitle = "Etsy";
+
+        Assert.assertTrue(actualTitle.contains(expectedInTitle));
     }
 
+    @AfterMethod
+    public void teardownMethod(){
+        HandleWait.staticWait(1);
+        driver.close();
+    }
 }
 /*
 
