@@ -1,5 +1,6 @@
 package com.cydeo.day8_properties_config_reader;
 
+import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.HandleWait;
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
@@ -23,7 +24,11 @@ public class T4_config_Practice {
     @BeforeMethod
     public void setupMethod(){
 
-        driver = WebDriverFactory.getDriver("chrome");
+        //We are getting the browserType dynamically from our configuration.properties file
+        String browserType = ConfigurationReader.getProperty("browser");
+        driver = WebDriverFactory.getDriver(browserType);
+
+        //driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://google.com");
