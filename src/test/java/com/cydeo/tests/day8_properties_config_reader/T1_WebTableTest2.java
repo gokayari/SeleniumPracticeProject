@@ -37,6 +37,12 @@ public class T1_WebTableTest2 {
 
     }
 
+    @Test
+    public void T1_test2(){
+        Driver.getDriver().get("https://practice.cydeo.com/web-tables");
+        WebTableUtils2.cityVerify(Driver.getDriver(), "Robert Baratheon", "Bluecity, CA");
+    }
+
     @AfterMethod
     public void tearDown(){
         /*
