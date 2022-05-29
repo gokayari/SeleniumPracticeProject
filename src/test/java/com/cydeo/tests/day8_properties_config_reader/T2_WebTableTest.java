@@ -5,7 +5,7 @@ import com.cydeo.utilities.HandleWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-public class T1_WebTableTest2 {
+public class T2_WebTableTest {
 
     /*
     WebDriver driver;
@@ -23,9 +23,9 @@ public class T1_WebTableTest2 {
         Driver.getDriver().get("https://practice.cydeo.com/web-tables");
 
 
-        String customer1_state = WebTableUtils2.returnState(Driver.getDriver(), "Ned Stark");
+        String customer1_state = T2_WebTableUtils2.returnState(Driver.getDriver(), "Ned Stark");
 
-        String customer2_state = WebTableUtils2.returnState(Driver.getDriver(), "Samuel Jackson");
+        String customer2_state = T2_WebTableUtils2.returnState(Driver.getDriver(), "Samuel Jackson");
 
 
         String expectedState1 = "Italy";
@@ -40,7 +40,7 @@ public class T1_WebTableTest2 {
     @Test
     public void T1_test2(){
         Driver.getDriver().get("https://practice.cydeo.com/web-tables");
-        WebTableUtils2.cityVerify(Driver.getDriver(), "Robert Baratheon", "Bluecity, CA");
+        T2_WebTableUtils2.cityVerify(Driver.getDriver(), "Robert Baratheon", "Bluecity, CA");
     }
 
     @AfterMethod

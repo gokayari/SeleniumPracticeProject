@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class WebTableUtils2 {
+public class T2_WebTableUtils2 {
 
     //Method #1 info:
     //• Name: returnState ()
