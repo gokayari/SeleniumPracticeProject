@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class ActionsPractices {
 
     @Test
-    public void task_4_and_5_test(){
+    public void task_4_and_5_test() {
         //TC #4: Scroll practice
         //1- Open a Chrome browser
         //2- Go to: https://practice.cydeo.com/
@@ -37,5 +37,18 @@ public class ActionsPractices {
         actions.sendKeys(Keys.PAGE_UP, Keys.PAGE_UP).perform();   //Keys.PAGE_UP means to go up a little
 
 
+        //Driver.getDriver().quit();    //if we start new Test after this line: NoSuchSessionException
+        Driver.closeDriver();
+
+    }
+
+    @Test
+    public void newtTest1() {
+        Driver.getDriver().get("https://practice.cydeo.com/");
+    }
+
+    @Test
+    public void newtTest2() {
+        Driver.getDriver().get("https://practice.cydeo.com/");
     }
 }
