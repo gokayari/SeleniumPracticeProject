@@ -36,5 +36,4 @@ public class LibraryLoginPage {
     public WebElement wrongEmailOrPasswordErrorMessage;
 
 
-
 }
