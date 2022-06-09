@@ -69,6 +69,8 @@ public class T2_T3_PomPractices {
 
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
 
+        Driver.closeDriver();
+
         //Expected: Sorry, Wrong Email or Password NOTE: FOLLOW POM DESIGN PATTERN
     }
 }
